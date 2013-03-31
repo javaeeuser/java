@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title></title>
+	<h:outputScript name="jquery-1.9.0.min.js" library="js"></h:outputScript>
+</h:head>
+<h:body>
+	<script type="text/javascript">
+		function ajaxSuccess(data){
+			var status=data.status;
+			switch (status) {
+			case "begin":
+				$("#result").html("Begining Ajax");
+				break;
+			case "complete":
+				$("#result").html("Complete Ajax");
+				break;
+			case "success":
+				$("#result").html("Success Ajax");
+				break;
+			default:
+				break;
+			}
+		}
+	</script>
+	<h:form prependId="false">
+		<h:dataTable value="#{testBean.questions}" var="q" id="table">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+			#{q.id}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Title</f:facet>
+			#{q.title}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Content</f:facet>
+			#{q.content}
+		</h:column>
+		</h:dataTable>
+
+		<div>
+			<h:inputText value="#{testBean.question.id}" />
+			<h:inputText value="#{testBean.question.title}" />
+			<h:inputText value="#{testBean.question.content}" />
+			<h:commandButton value="add" action="#{testBean.create()}">
+				<f:ajax execute="@form" render="table" onevent="ajaxSuccess"></f:ajax>
+			</h:commandButton>
+
+		</div>
+		<div id="result"></div>
+	</h:form>
+</h:body>
+</html>

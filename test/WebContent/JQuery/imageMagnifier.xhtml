@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<h:outputScript name="jquery-1.9.0.min.js" library="js"></h:outputScript>
+	<h:outputScript name="jquery.loupe.js" library="js"></h:outputScript>
+
+	<style type="text/css">
+/* a#demo-1 {
+	background-image: url(../resources/images/sample.gif);
+	background-size: 400px 400px;
+	width: 400px;
+	height: 400px;
+	display: block;
+} */
+</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#image").loupe();
+			$("#demo-1").loupe();
+		});
+	</script>
+</h:head>
+<h:body>
+	<h:form prependId="false">
+		<div style="background-color: red; height: 100px;"></div>
+		<p:graphicImage id="image"
+			url="../resources/images/photo_unavailable.gif" height="300px"
+			width="300px"></p:graphicImage>
+		<div>
+			<a id="demo-1" href="../resources/images/photo_unavailable.gif">
+				<p:graphicImage url="../resources/images/sample.gif"></p:graphicImage>
+			</a>
+		</div>
+	</h:form>
+</h:body>
+</html>

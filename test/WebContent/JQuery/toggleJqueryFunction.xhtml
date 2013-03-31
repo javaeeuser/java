@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title></title>
+	<h:outputScript name="jquery-1.9.0.min.js" library="js"></h:outputScript>
+</h:head>
+<h:body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		$("#add-question").click(function(){
+
+$("#create-form").toggle();
+
+			});
+
+		});
+	</script>
+	<h:button value="add question" id="add-question"
+		onclick="return false;">
+	</h:button>
+	<h:form prependId="false">
+
+
+		<div id="create-form" style="display: none;">
+			<h:inputText value="#{testBean.question.id}" />
+			<h:inputText value="#{testBean.question.title}" />
+			<h:inputText value="#{testBean.question.content}" />
+			<h:commandButton value="add" action="#{testBean.create()}">
+
+			</h:commandButton>
+
+		</div>
+	</h:form>
+</h:body>
+</html>

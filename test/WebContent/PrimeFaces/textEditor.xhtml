@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#jjj").css("background-color", "red");
+		})
+	</script>
+</h:head>
+<body>
+	<h:form prependId="false">
+	
+		<div id="jjj" style="height: 100px; width: 100px;"></div>
+		<p:editor value="#{testBean.question.content}"></p:editor>
+		<p:button value="create"></p:button>
+		<p:fileUpload></p:fileUpload>
+		<p:dataTable value="#{testBean.questions}" var="q" paginator="true" >
+			<p:column>
+				<f:facet name="header">ID</f:facet>#{q.id}</p:column>
+			<p:column>
+				<f:facet name="header">Title</f:facet>#{q.title}</p:column>
+			<p:column>
+				<f:facet name="header">Content</f:facet>#{q.content}</p:column>
+
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
