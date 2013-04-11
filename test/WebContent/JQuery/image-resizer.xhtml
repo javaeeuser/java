@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<h:outputScript name="jquery-1.9.0.min.js" library="js"></h:outputScript>
+	<h:outputScript name="jquery.loupe.js" library="js"></h:outputScript>
+
+	<style type="text/css">
+/* a#demo-1 {
+	background-image: url(../resources/images/sample.gif);
+	background-size: 400px 400px;
+	width: 400px;
+	height: 400px;
+	display: block;
+} */
+</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#resize").click(function() {
+
+				var width = $("#width").val();
+				var height = $("#height").val();
+				var img = $("#image");
+				img.width(width);
+				img.height(height);
+			});
+
+			$("#ratio").change(function() {
+				var ratio = $("#ratio option:selected").val();
+				var img = $("#image");
+				var width = img[0].naturalWidth;
+				var height = img[0].naturalHeight;
+				width = width +(ratio / 100) * width;
+				height =height+ (ratio / 100) * height;
+
+				img.width(width);
+				img.height(height);
+
+			});
+		});
+	</script>
+</h:head>
+<h:body>
+	<h:form prependId="false">
+
+
+		<div>
+			Width :
+			<h:inputText id="width" />
+			Height :
+			<h:inputText id="height" />
+			<h:link value="resize" onclick="return false;" id="resize" />
+			<h:selectOneMenu id="ratio">
+				<f:selectItem itemLabel="10" itemValue="10" />
+				<f:selectItem itemLabel="25" itemValue="25" />
+				<f:selectItem itemLabel="50" itemValue="50" />
+				<f:selectItem itemLabel="75" itemValue="75" />
+				<f:selectItem itemLabel="100" itemValue="100" />
+			</h:selectOneMenu>
+
+		</div>
+		<div style="overflow: auto; width: 600px;height: 400px;">
+			<p:graphicImage id="image"
+				url="../resources/images/photo_unavailable.gif"></p:graphicImage>
+		</div>
+
+
+
+	</h:form>
+</h:body>
+</html>
