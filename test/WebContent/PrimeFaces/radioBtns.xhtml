@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+
+		<h:panelGrid>
+			<p:selectBooleanCheckbox value="#{radioButtonBean.one}" id="one">
+				<p:ajax event="change"
+					update="first-panel two second-panel second-first-panel"
+					listener="#{radioButtonBean.toggleOne}"></p:ajax>
+			</p:selectBooleanCheckbox>
+
+			<h:panelGrid id="first-panel" style="margin-left:20px">
+				<p:selectBooleanCheckbox rendered="#{radioButtonBean.one}"
+					id="one-one" value="#{radioButtonBean.oneone}">
+					<p:ajax event="change" update="first-first-panel one-two"
+						listener="#{radioButtonBean.toggleOneOne}"></p:ajax>
+				</p:selectBooleanCheckbox>
+
+				<h:panelGrid id="first-first-panel" style="margin-left:40px">
+
+					<p:selectBooleanCheckbox rendered="#{radioButtonBean.oneone}"
+						id="one-two-one" value="#{radioButtonBean.onetwoone}">
+						<p:ajax event="change" update="one-two-two"
+							listener="#{radioButtonBean.toggleOneTwoOne}"></p:ajax>
+					</p:selectBooleanCheckbox>
+
+					<p:selectBooleanCheckbox rendered="#{radioButtonBean.oneone}"
+						id="one-two-two" value="#{radioButtonBean.onetwotwo}">
+						<p:ajax event="change" update="one-two-one"
+							listener="#{radioButtonBean.toggleOneTwoTwo}"></p:ajax>
+					</p:selectBooleanCheckbox>
+
+				</h:panelGrid>
+
+				<p:selectBooleanCheckbox rendered="#{radioButtonBean.one}"
+					id="one-two" value="#{radioButtonBean.onetwo}">
+					<p:ajax event="change" update="first-first-panel one-one"
+						listener="#{radioButtonBean.toggleOneTwo}"></p:ajax>
+				</p:selectBooleanCheckbox>
+			</h:panelGrid>
+
+
+			<p:selectBooleanCheckbox value="#{radioButtonBean.two}" id="two">
+				<p:ajax event="change"
+					update="second-panel one first-panel first-first-panel"
+					listener="#{radioButtonBean.toggleTwo}"></p:ajax>
+			</p:selectBooleanCheckbox>
+
+
+			<h:panelGrid id="second-panel" style="margin-left:20px">
+				<p:selectBooleanCheckbox rendered="#{radioButtonBean.two}"
+					id="two-one" value="#{radioButtonBean.twoone}">
+					<p:ajax event="change" update="second-first-panel two-two"
+						listener="#{radioButtonBean.toggleTwoOne}"></p:ajax>
+				</p:selectBooleanCheckbox>
+
+				<h:panelGrid id="second-first-panel" style="margin-left:40px">
+
+					<p:selectBooleanCheckbox rendered="#{radioButtonBean.twoone}"
+						id="two-two-one" value="#{radioButtonBean.twotwoone}">
+						<p:ajax event="change" update="two-two-two"
+							listener="#{radioButtonBean.toggleTwoTwoOne}"></p:ajax>
+					</p:selectBooleanCheckbox>
+
+
+					<p:selectBooleanCheckbox rendered="#{radioButtonBean.twoone}"
+						id="two-two-two" value="#{radioButtonBean.twotwotwo}">
+						<p:ajax event="change" update="two-two-one"
+							listener="#{radioButtonBean.toggleTwoTwoTwo}"></p:ajax>
+					</p:selectBooleanCheckbox>
+
+				</h:panelGrid>
+
+				<p:selectBooleanCheckbox rendered="#{radioButtonBean.two}"
+					id="two-two" value="#{radioButtonBean.twotwo}">
+					<p:ajax event="change" update="second-first-panel two-one"
+						listener="#{radioButtonBean.toggleTwoTwo}"></p:ajax>
+				</p:selectBooleanCheckbox>
+			</h:panelGrid>
+
+
+
+
+		</h:panelGrid>
+		<p:commandButton value="print" action="#{radioButtonBean.print}"></p:commandButton>
+
+	</h:form>
+</h:body>
+</html>
